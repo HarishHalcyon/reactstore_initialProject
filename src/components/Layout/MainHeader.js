@@ -1,14 +1,11 @@
-import CartButton from '../Cart/CartButton';
-import classes from './MainHeader.module.css';
-import {useSelector, useDispatch} from 'react-redux'
-
-
-import {useSelector,useDispatch} from 'react-redux'
+import CartButton from "../Cart/CartButton";
+import classes from "./MainHeader.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { actiontogglecart } from "../../reducers/shoppingReducer";
 const MainHeader = (props) => {
   const dispatch = useDispatch();
-  
-  function  toggleClick()
-  {
+
+  function toggleClick() {
     dispatch(actiontogglecart());
   }
   return (
@@ -17,7 +14,7 @@ const MainHeader = (props) => {
       <nav>
         <ul>
           <li>
-            <CartButton onClick={toggleClick}/>
+            <CartButton onClick={toggleClick} />
           </li>
         </ul>
       </nav>
