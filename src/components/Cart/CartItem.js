@@ -1,27 +1,25 @@
-import classes from './CartItem.module.css';
-import {useDispatch} from 'react-redux'
+import classes from "./CartItem.module.css";
+import { useDispatch } from "react-redux";
 
-import {actionIncreaseCartby1,actionDecreaseCartby1} from '../../reducers/cartReducer'
+import { actionAddToCart } from "../../reducers/cartReducer";
 
 const CartItem = (props) => {
   const { title, quantity, total, price } = props.item;
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-function IncreaseOne()
-{
-  dispatch(actionIncreaseCartby1({quantity,price}));
-}
+  function IncreaseOne() {
+    dispatch(actionAddToCart({ title, price, num: 1 }));
+  }
 
-function DecreaseOne()
-{
-  dispatch(actionDecreaseCartby1({quantity,price}));
-}
+  function DecreaseOne() {
+    dispatch(actionAddToCart({ title, price, num: -1 }));
+  }
   return (
     <li className={classes.item}>
       <header>
         <h3>{title}</h3>
         <div className={classes.price}>
-          ${total.toFixed(2)}{' '}
+          ${total.toFixed(2)}{" "}
           <span className={classes.itemprice}>(${price.toFixed(2)}/item)</span>
         </div>
       </header>
