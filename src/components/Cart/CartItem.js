@@ -1,8 +1,21 @@
 import classes from './CartItem.module.css';
+import {useDispatch} from 'react-redux'
+
+import {actionIncreaseCartby1,actionDecreaseCartby1} from '../../reducers/cartReducer'
 
 const CartItem = (props) => {
   const { title, quantity, total, price } = props.item;
+const dispatch = useDispatch();
 
+function IncreaseOne()
+{
+  dispatch(actionIncreaseCartby1({quantity,price}));
+}
+
+function DecreaseOne()
+{
+  dispatch(actionDecreaseCartby1({quantity,price}));
+}
   return (
     <li className={classes.item}>
       <header>
@@ -17,8 +30,8 @@ const CartItem = (props) => {
           x <span>{quantity}</span>
         </div>
         <div className={classes.actions}>
-          <button>-</button>
-          <button>+</button>
+          <button onClick={DecreaseOne}>-</button>
+          <button onClick={IncreaseOne}>+</button>
         </div>
       </div>
     </li>
